@@ -80,6 +80,17 @@ input, textarea, select {
     border-radius: 10px;
 }
 
+.lost {
+    color: red;
+    font-size: 50px
+}
+
+.won {
+    color: green;
+    font-size: 50px
+
+}
+
 
 button a {
     text-decoration: none;

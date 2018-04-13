@@ -11,20 +11,23 @@ def index():
 
 @app.route('/guess', methods=['POST'])
 def guess():
-	session['guessNumber'] = request.form['guessNumber']
+	session['message'] = []
+	session['guessNumber'] = int(request.form['guessNumber'])
 	print "randon" , session['random_number']
-	print "chosen" , session['guessNumber']
+	print "chosen" , session['guessNumber'], type(session['guessNumber'])
 	if session['guessNumber'] == session['random_number'] :
 		session['message'] = "Yes"
-		session.pop('guessNumber')
-		session.pop('random_number')
 	elif session['guessNumber'] < session['random_number'] :
 		session['message'] = "Too low"
 		session.pop('guessNumber')
-	else :
-		session['message'] = "too high"
+	elif session['guessNumber'] > session['random_number'] :
+		session['message'] = "Too high"
 		session.pop('guessNumber')
-	return render_template ('index.html', message=session['message'])
+	return render_template ('index.html', message = session['message'])
 
+@app.route('/tryAgain')
+def tryAgain():
+	session.pop('random_number')
+	return redirect ('/')
 
 app.run(debug=True)

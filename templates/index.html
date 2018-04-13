@@ -28,13 +28,13 @@
                     </form>
                         {% if message == "Yes" %}
                             <div id="gameResult">
-                                <h2>{{session['guessNumber']}} is the chosen number Try again</h2>
-                                <button>Play again</button>
+                                <h2 class="won">{{ session['guessNumber'] }} is the winner number. Play again!</h2>
+                                <button class="bt_format"><a href="/tryAgain">Play again</a></button>
                             </div>  
                         {% endif %}
                         {% if message != "Yes" %}
                             <div id="gameResult">
-                                <h2>{{message}}</h2>
+                                <h2 class="lost">{{ message }}</h2>
                             </div>  
                         {% endif %}
 				</div>
